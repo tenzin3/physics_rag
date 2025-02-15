@@ -7,7 +7,7 @@ import spacy
 nlp = spacy.load("en_core_web_sm")
 
 class Chunker:
-    def chunk_text_with_spacy(self, text: str, max_length: int = 500) -> List[str]:
+    def chunk_text_with_spacy(self, text: str, max_length: int) -> List[str]:
         doc = nlp(text)
         chunks = []
         current_chunk = []
@@ -38,9 +38,9 @@ class Chunker:
 if __name__ == "__main__":
     from utils import read_json, write_json
 
-    extracted_text = read_json("extracted_text.json")
+    extracted_text = read_json("data/extracted_text.json")
 
     chunker = Chunker()
     chunked_text = chunker.chunk(extracted_text)
 
-    write_json("chunked_text.json", chunked_text)
+    write_json("data/chunked_text.json", chunked_text)
