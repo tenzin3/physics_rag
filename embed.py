@@ -16,10 +16,9 @@ class Embedder:
     def embed(self, text:str):
         token_embeddings = self.token_embed(text)
         sentence_embedding = token_embeddings.mean(dim=1)
-        return sentence_embedding
+        return sentence_embedding.detach().numpy()  # Convert to NumPy array
 
+if __name__ == "__main__":
+    from utils import read_json, write_json
 
-embedder = Embedder()
-text = "The quick brown fox jumps over the lazy dog."
-embedding = embedder.embed(text)
-print(embedding)
+    chunked_text = read_json("data/chunked_text.json")
