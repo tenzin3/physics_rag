@@ -18,6 +18,11 @@ class Embedder:
         sentence_embedding = token_embeddings.mean(dim=1)
         return sentence_embedding.detach().numpy()  # Convert to NumPy array
 
+
+def get_text_embedding(text:str):
+    embedder = Embedder()
+    return embedder.embed(text)
+
 if __name__ == "__main__":
     from utils import read_json, write_json
 
