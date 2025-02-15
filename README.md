@@ -1,1 +1,1 @@
-# lhcb_rag
+# physics_rag
