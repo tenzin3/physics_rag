@@ -1,5 +1,6 @@
 import fitz
 import json 
+import spacy 
 from pathlib import Path
 from typing import Dict 
 
@@ -26,3 +27,26 @@ def read_json(file_path):
 def write_json(file_path, data):
     with open(file_path, "w") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+def get_entities(text: str):
+    nlp = spacy.load("en_core_web_sm")
+    doc = nlp(text)
+    entities = []
+    for ent in doc.ents:
+        entities.append(ent.label_)
+
+    # Return unique entities
+    entities = list(set(entities))
+    return entities
+
+
+if __name__ == "__main__":
+    
+    extracted_text = read_json("data/extracted_text.json")
+    text = ""
+    for page_no, page_text in extracted_text.items():
+        text += page_text
+
+    entities = get_entities(text)
+    Path("entities.txt").write_text("\n".join(entities))
