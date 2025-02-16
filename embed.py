@@ -23,21 +23,4 @@ def get_text_embedding(text:str):
     embedder = Embedder()
     return embedder.embed(text)
 
-if __name__ == "__main__":
-    from utils import read_json, write_json
-
-    chunked_text = read_json("data/chunked_text.json")
-
-    embeded_chunks = []
-
-    embedder = Embedder()
-    for page_no, chunks in chunked_text.items():
-        for i, chunk in enumerate(chunks, start=1):
-            embedding = embedder.embed(chunk)
-            embeded_chunks.append({
-                "page_no": page_no,
-                "chunk_no": i,
-                "text": chunk,
-                "embedding": embedding.tolist()
-            })
-    write_json("data/embeded_chunks.json", embeded_chunks)
+    

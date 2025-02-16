@@ -26,10 +26,3 @@ def read_json(file_path):
 def write_json(file_path, data):
     with open(file_path, "w") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
-
-
-if __name__ == "__main__":
-
-    pdf_file = Path("research_paper.pdf")
-    extracted_text = extract_text_from_pdf_file(pdf_file)
-    write_json("extracted_text.json", extracted_text)

@@ -35,12 +35,3 @@ class Chunker:
             chunked_text[page_no] = self.chunk_text_with_spacy(text, max_length)
         return chunked_text
 
-if __name__ == "__main__":
-    from utils import read_json, write_json
-
-    extracted_text = read_json("data/extracted_text.json")
-
-    chunker = Chunker()
-    chunked_text = chunker.chunk(extracted_text)
-
-    write_json("data/chunked_text.json", chunked_text)
