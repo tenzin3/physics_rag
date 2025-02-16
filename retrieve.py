@@ -24,7 +24,7 @@ def retrieve_topk_chunks(query_text:str , top_k=5):
     return similarities[:top_k]
 
 if __name__ == "__main__":
-    query = "Explain the role of blockchain in log analysis."
+    query = "What is lhcb?"
     top_chunks = retrieve_topk_chunks(query, top_k=3)
 
     for score, chunk in top_chunks:

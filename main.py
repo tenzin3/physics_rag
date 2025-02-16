@@ -39,7 +39,7 @@ def main(pdf_file: Path| str, output_path: Path | str):
 
 
 if __name__ == "__main__":
-    pdf_file = "data/whitepaper.pdf"
-    output_path = "data/output"
+    pdf_file = "data/research_paper.pdf"
+    output_path = "data"
     main(pdf_file, output_path)
     
