@@ -1,8 +1,18 @@
 from pathlib import Path 
+from typing import Dict 
 
 from chunker import Chunker
 from embed import Embedder
 from utils import extract_text_from_pdf_file, write_json
+
+
+def remove_paper_references(extracted_text:Dict)->Dict:
+    res = {}
+    for page_no, text in extracted_text.items():
+        if page_no <= 12:
+            res[page_no] = text
+
+    return res
 
 
 def main(pdf_file: Path| str, output_path: Path | str):
@@ -15,6 +25,7 @@ def main(pdf_file: Path| str, output_path: Path | str):
     extracted_text = extract_text_from_pdf_file(pdf_file)
     output_path = Path(output_path)
     output_path.mkdir(parents=True, exist_ok=True)
+    extracted_text = remove_paper_references(extracted_text)
     write_json(output_path / "extracted_text.json", extracted_text)
 
 
