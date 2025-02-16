@@ -1,5 +1,4 @@
 from transformers import AutoTokenizer, AutoModel
-import torch
 
 class Embedder:
     def __init__(self, model_name="thellert/physbert_cased"):

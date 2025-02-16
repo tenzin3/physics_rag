@@ -1,1 +1,5 @@
-PyMuPDF
+PyMuPDF == 1.25.3
+spacy == 3.8.4
+scikit-learn == 1.6.1
+numpy == 2.2.3
+transformer == 4.48.3
